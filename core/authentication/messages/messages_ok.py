@@ -1,0 +1,1 @@
+LOGIN_OK={"msg": "Hey! Sesión iniciada correctamente"}

@@ -1,5 +1,5 @@
 from django.db import models
-
+from authentication.models import CustomUser
 # Create your models here.
 
 class Priority(models.Model):
@@ -11,6 +11,7 @@ class Priority(models.Model):
 
 
 class task(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     title=models.CharField(max_length=20, null=False)
     description=models.TextField(max_length=100, null=True, blank=True)
     date_limited=models.DateField()
@@ -18,4 +19,4 @@ class task(models.Model):
     prioridad=models.ForeignKey(Priority, on_delete= models.DO_NOTHING)
 
     def __str__(self):
-      return f"{self.title} - {self.description}"
+      return f"{self.title} - {self.user}"
